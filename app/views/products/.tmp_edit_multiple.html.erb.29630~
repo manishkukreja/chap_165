@@ -22,7 +22,11 @@
     <%= f.label :price %><br />
     <%= f.text_field :price %>
   </div>
- 
+  <div class="field">
+  	<%= f.label :discontinued %>
+    <%= f.select :discontinued,[["Yes",true],["No",false]],:include_blank => true %><br />
+    
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
