@@ -1,0 +1,31 @@
+<h1>Listing products</h1>
+
+<%form_tag edit_multiple_products_path, :method => :post do%>
+<table>
+  <tr>
+  	<th></th>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+
+<% @products.each do |product| %>
+  <tr>
+  	<td><%= check_box_tag "product_ids[]", product.id %></td>
+    <td><%= product.name %></td>
+    <td><%= product.category %></td>
+    <td><%= product.price %></td>
+    <td><%= link_to 'Show', product %></td>
+    <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  
+<% end %>
+</table>
+<%= submit_tag "Edit checked"%>
+<br />
+<%end%>
+<%= link_to 'New Product', new_product_path %>

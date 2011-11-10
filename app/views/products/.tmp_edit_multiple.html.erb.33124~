@@ -1,0 +1,34 @@
+<h1>"Edit Multiple Products"</h1>
+
+<% form_for :product, :url => update_multiple_products_path, :html => {:method => :put}  do |f| %>
+<ul>
+	<%for product in @products%>
+	<li>
+		<%= hidden_field_tag "product_ids[]", product.id%>
+		<%= h product.name%>
+	</li>
+	<%end%>
+</ul>
+
+<div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br />
+    <%= f.text_field :category  %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+  	<%= f.label :discontinued %>
+    <%= f.select :discontinued,[["Yes",true],["No",false]],:include_blank => true %><br />
+    
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
